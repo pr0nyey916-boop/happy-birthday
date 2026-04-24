@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div><h1>Привет папа! этот сайт я создал под свое день рождения</h1></div>
+   <div><h3>Ты обещал что если я изучу програмирование ты мне купишь ВР очки</h3></div>
+<div><span><h2>А именно <a href="https://oculusrussia.ru.com/?ysclid=moa6y2gmjg166283557" target="_blank">Oqulus quest 3</a> </h2></span><div>
+<div><section><h2>Так что</h2></section></div>
+<h2>Я подготовил <a href="https://www.youtube.com/watch?v=yRR_23zQM6Q&t=781s" target="_blank">видео</a> обзор с очками и свои достижения</h2>
+<h2><ol>
+<li> <h3>Это конечно этот сайт</h3></li>
+<li><h3>Где можно купить очки <a href="https://www.wildberries.ru/catalog/559198962/detail.aspx" target="_blank">тут</a></h3><li>
+    <h3>А <a href="https://www.wildberries.ru/catalog/373613998/detail.aspx">здесь</a> желательно или даже нужно купить провод чтоб я мог подключать шлем к пк</h3>
+ <li><h3> И я решил пойти на <a href="https://skyeng.ru/it-industry/it/frontend-chto-eto-takoye-prostymi-slovami/">Fronted</a> разработчика</h3></li> 
+<li><h3>Сейчас изучаю HTML</h3></li>
+<li><h3>А потом CSS и Javascript</h3></li>
+</li>
+</div>
+</ol>
+</h2>
+<p>
+    <h1>
+        А тепеть топ причин зачем мне нужны очки виртуальной реальности
+    </h1>
+</p>
+<ul>
+    <li>
+        <img
+        src="https://a.d-cd.net/kDDrbLQdjnJqymuX7my_D2IsjxY-960.jpg"
+        alt="пожалуйста"
+        width="260" height="250"
+    <li>
+        <li>
+            <h2>
+                Очки помогаю прокачать вестибулярный аппарат
+            </h2>
+        </li>
+        <li>
+            <h2>
+                В них можно заниматься спортом, а также програмировать
+            </h2>
+        </li>
+        <p><h2>
+            Анкета
+        </h2></p>
+
+</ul><h3>
+        <label> Ваше имя:</label>
+        <input type="text" id="nameInput" placeholder="Например: Александр" autocomplete="off">
+    </div>
+     <label> Кто вы именнинику:</label>
+        <input type="text" id="nameInput" placeholder="Например: Папа или Мама или друг" autocomplete="off">
+    </div>
+
+    <div class="form-group">
+        <label> Ваш возраст:</label>
+        <input type="number" id="ageInput" placeholder="Сколько лет?">
+    </div>
+
+    <div class="form-group">
+        <label> Что вы будете дарить на день рождения:</label>
+        <textarea id="giftInput" rows="2" placeholder="Напишите подарок..."></textarea>
+    </div>
+
+    <button class="btn" id="checkBtn"> Оценить подарок </button>
+
+    <div class="result" id="resultBlock">
+         
+    </div>
+    <footer>
+         Подсказка: очки виртуальной реальности — топ подарок!
+    </footer>
+</div>
+
+<script>
+    (function() {
+        const vrKeywords = [
+            "вр очки",
+            "вр",
+            "окулус квест 3",
+            "квест 3",
+            "окулус",
+            "oculus quest 3",
+            "очки виртуальной реальности"
+        ];
+
+        
+        function normalizeString(str) {
+            return str.trim().toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, '').replace(/\s+/g, ' ');
+        }
+
+        
+        function isVRGift(giftText) {
+            if (!giftText || giftText.trim() === "") return false;
+            
+            const normalizedGift = normalizeString(giftText);
+            
+            
+            for (let keyword of vrKeywords) {
+                const normalizedKeyword = normalizeString(keyword);
+                if (normalizedGift.includes(normalizedKeyword)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        
+        function showResult(isVR, userName, giftRaw) {
+            const resultDiv = document.getElementById('resultBlock');
+            
+            if (!userName || userName.trim() === "") {
+                userName = "Гость";
+            }
+            
+            
+            let giftDisplay = giftRaw.trim();
+            if (giftDisplay === "") giftDisplay = "ничего";
+            else if (giftDisplay.length > 50) giftDisplay = giftDisplay.slice(0, 47) + "...";
+            
+            if (isVR) {
+               
+                resultDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center;">
+                        <span style="font-size: 2rem;"></span>
+                        <span><strong>${escapeHtml(userName)}</strong>, <span style="color:#c41e3a;">ОТЛИЧНЫЙ ПОДАРОК!</span> </span>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 1rem;">
+                        «${escapeHtml(giftDisplay)}» — мечта любого гика! Виртуальная реальность ждёт!
+                    </div>
+                    <div style="margin-top: 8px;"> Лучший выбор </div>
+                `;
+            } else {
+                
+                resultDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center;">
+                        <span style="font-size: 1.8rem;"></span>
+                        <span><strong>${escapeHtml(userName)}</strong>, <span style="color:#e67e22;">подарок хороший, но ВР очки будет по лучше</span> </span>
+                    </div>
+                    <div style="margin-top: 8px; font-size: 0.95rem; opacity: 0.9;">
+                        (Подумайте про очки виртуальной реальности — Oculus Quest 3 или аналог)
+                    </div>
+                    <div style="margin-top: 6px;"> Ваш вариант: «${escapeHtml(giftDisplay)}»</div>
+                `;
+            }
+        }
+
+        
+        function escapeHtml(str) {
+            if (!str) return "";
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+                return c;
+            });
+        }
+
+       
+        function evaluateGift() {
+            const nameField = document.getElementById('nameInput');
+            const ageField = document.getElementById('ageInput');
+            const giftField = document.getElementById('giftInput');
+            
+            let userName = nameField.value.trim();
+            let ageValue = ageField.value.trim();
+            let giftText = giftField.value.trim();
+            
+           
+            if (userName === "") {
+                userName = "Друг";
+            }
+            
+            
+            const vrDetected = isVRGift(giftText);
+            
+            
+            showResult(vrDetected, userName, giftText);
+            
+            
+            if (ageValue !== "") {
+                console.log(`Возраст именинника: ${ageValue} лет`);
+            }
+        }
+        
+       
+        const button = document.getElementById('checkBtn');
+        button.addEventListener('click', evaluateGift);
+          
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && input.tagName !== 'TEXTAREA') {
+                    e.preventDefault();
+                    evaluateGift();
+                }
+            });
+        });
+        
+        const resultDiv = document.getElementById('resultBlock');
+        resultDiv.style.background = "#fff0f3";
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html> 
